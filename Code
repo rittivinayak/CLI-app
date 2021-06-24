@@ -1,0 +1,115 @@
+var readLineSync = require("readline-sync");
+
+//welcome message
+
+var userName = readLineSync.question("Hey Soccer-holic ! \nMay I know your name? ");
+console.log("\nA warm welcome " + userName + "! ");
+
+function skip(){
+console.log("Buckle up! Lets get this quiz started! \n");
+
+var data =[[{
+    question : ">> How many players are allowed in a team ? (in words) ",
+    answer : "eleven"
+  },{
+    question : ">> Whats the duration of a half time in minutes? (in words) ",
+    answer : "forty five"
+  },{
+    question : ">> What is the jersey number of Neymar for club PSG, currently? (in words) ",
+    answer : "ten"
+  }],
+
+  [{
+    question : ">> Which country awards Ballon D'or? ",
+    answer : "France"
+  },{
+    question : ">> What is the RealMadrid-Barcelona derby known as ? ",
+    answer :"Elclasico"
+  },{
+    question : ">> Who has more international goals? Ronaldo or Messi? ",
+    answer : "Ronaldo"
+  }],
+
+  [{
+    question : ">> Which footballer broke the Ronaldo-Messi Ballon d'or streak? ",
+    answer : "Luka Modric"
+  },{
+    question : ">> Which active player is the second highest goal scorer for the respective national team? ",
+    answer : "Sunil Chhetri"
+    },{
+      question : ">> Which country hosts Laliga? ",
+      answer : "Spain"
+    }]
+];
+
+//quiz function
+var score = 0;
+// var levelOneScore = 0;
+var levelTwoScore = 0;
+function quiz(que,ans){
+  var temp = readLineSync.question(que);
+  
+  if (ans.toUpperCase().split(" ").join("") === temp.toUpperCase().split(" ").join("")){
+    console.log("right ! ");
+    score = score + 1;
+    }else{
+      console.log("wrong ! ");
+    }
+    console.log("Your current score is " + score);
+    console.log("------------------------- \n");
+}
+ 
+
+//questions display
+for (i=0;i<data[0].length;i++){
+  for (j=0;j<data[0].length;j++)
+  var temp = data[0][i];
+  quiz(temp.question,temp.answer);
+  
+}
+
+levelOneScore = score;
+console.log("Your level I score is " + levelOneScore);
+
+if (levelOneScore === 3){
+  console.log("Kudos! You are now an Amatuer football fan ! ");
+  console.log("You are now promoted to level 2 \n");
+  {for (i=0;i<data[1].length;i++){
+    for(j=0;j<data[1].length;j++)
+     var temp = data[1][i];
+     quiz(temp.question,temp.answer);
+     }
+  }
+    levelTwoScore = score;
+    console.log("Your level II score is " + levelTwoScore + "\n");
+  }
+
+else{
+   
+  console.log("Score minimum of 3 to become an Amatuer ! \nPull your socks up champ! Try again! \n");
+  skip();
+}
+
+if (levelTwoScore === 6){
+  console.log("Kudos ! You are now an Expert football fan ! ");
+  console.log("You are now promoted to level 3 \n");
+  {for (i=0;i<data[2].length;i++){
+    for(j=0;j<data[2].length;j++)
+     var temp = data[2][i];
+     quiz(temp.question,temp.answer);
+     }
+    }
+    levelThreeScore = score;
+    console.log("Your final score is " + levelThreeScore + "\n");
+    console.log("Congrats! You are the true SOCCER-HOLIC!!  ");
+    levelTwoScore = 9;
+  }
+
+else{
+  console.log("Score minimum of 6 to become an Expert ! \nPull your socks up champ! Try again! \n ");
+  skip();
+
+}
+ 
+}
+skip();
